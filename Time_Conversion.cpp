@@ -47,7 +47,7 @@ std::string timeConversion(std::string s) {
     return output;
 }
 
-
+/*
 void main()
 {
     std::string time = "07:05:45PM";
@@ -56,3 +56,4 @@ void main()
 
     std::cout << output;
 }
+*/

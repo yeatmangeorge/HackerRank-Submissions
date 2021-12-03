@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Find_Lonely_Integer.cpp" />
     <ClCompile Include="Mini_Max.cpp" />
     <ClCompile Include="plusMinus.cpp" />
     <ClCompile Include="Time_Conversion.cpp" />
