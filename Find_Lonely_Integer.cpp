@@ -2,37 +2,41 @@
 #include <string>
 #include <iostream>
 
-int lonelyinteger(std::vector<int> &a) {
-    if (a.size() == 1)
+/*Removes non-lonely integers. If the first integer is
+found to be lonely all over integers are immediately removed*/
+static void removeNonLonelyInt(std::vector<int> &a)
+{
+    bool firstIntLonely = true;
+
+    for (int i = 1; i < a.size(); i++)
     {
-        return a[0];
-    }
-    else {
+        if (a[0] == a[i])
         {
-            int sizeOfA = a.size();
-            for (int i = 0; i < sizeOfA; i++)
-            {
-                if (a[0] == a[i])
-                {
-                    a.erase(a.begin() + i);
-                    a.erase(a.begin());
-                    break;
-                }
-            }
-            lonelyinteger(a);
-            /*
-            if (a.size() == sizeOfA)
-            {
-                return a[0];
-            }
-            */
+            firstIntLonely = false;
+            a.erase(a.begin() + i);
+            a.erase(a.begin());
+            break;
         }
     }
+
+    if (firstIntLonely)
+    {
+        a = std::vector<int>{ a[0] };
+    }
+}
+
+int lonelyinteger(std::vector<int> &a) {
+    //Remove non-lonely integers until only a single int remains
+    while (a.size() > 1)
+    {
+        removeNonLonelyInt(a);
+    }
+    return a[0];
 }
 
 void main()
 {
-    std::vector<int> a{ 2,0, 0, 1 ,1 };
+    std::vector<int> a{ 0, 2, 0, 1 ,1 };
     int b=lonelyinteger(a);
    std::cout << std::to_string(b);
 }
